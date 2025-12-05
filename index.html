@@ -126,17 +126,17 @@ body {
                 </div>
                 <div class="alert-concent">
 				    <p>
-                       <font size="5">永久官网</font>  
-                       <a id="latest" style="color:#4AB0F7;font-size:20px" data-url="" onclick="javascript:top.location.href=this.getAttribute('data-url');">
-                            muhebo.github.io
-                        </a>
-                    </p> 
+       <font size="5">官网频道</font>  
+         <a id="latest" style="color:#4AB0F7;font-size:20px" data-url="https://t.me/+ozCTB7VsmvFkMTNl" onclick="javascript:top.location.href=this.getAttribute('data-url');">
+           nanoceo.github.io
+             </a>
+           </p>
                     <br>
                     <p>
-                       <font size="5">TG交流群</font>  
-                       <a id="latest" style="color:#4AB0F7;font-size:20px" data-url="https://t.me/muhebondage"
+                       <font size="5">TG机器人</font>  
+                       <a id="latest" style="color:#4AB0F7;font-size:20px" data-url="https://t.me/NanoAir_bot"
                         onclick="javascript:top.location.href=this.getAttribute('data-url');">
-                            @muhebondage
+                            @NanoAir
                         </a>
                     </p>
                     <br>
@@ -176,7 +176,12 @@ body {
 		// 设定跳转链接
 		function alertSet() {
 			var inviteCode = getQueryParam("invite"); // 获取URL中的invite参数
-			var jumpUrl = "https://edu.shimo.men/auth/register?code=" + inviteCode; // 动态生成跳转链接
+			var jumpUrl = "https://edu.shimo.men/auth/register"; // 默认跳转链接
+
+			// 如果有邀请码，则附加到URL上
+			if (inviteCode) {
+				jumpUrl = "https://edu.shimo.men/auth/register?code=" + inviteCode;
+			}
 
 			// 更新页面上的链接
 			document.getElementById("latest").setAttribute("data-url", jumpUrl);
