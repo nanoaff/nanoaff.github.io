@@ -9,7 +9,7 @@
 <link rel="shortcut icon" href="https://www.tsinghua.edu.cn/favicon.ico" type="image/x-icon">
 
 <style>
-html { display: none; }  /* ⭐ 默认隐藏所有页面，防止闪屏 */
+html { display: none; }  
 
 body {
 	margin: 0;
@@ -117,7 +117,7 @@ body {
 
 				<div class="alert-concent">
 					<p>
-						<font size="5">官网频道</font>  
+						<font size="5">官方频道</font>  
 						<a style="color:#4AB0F7;font-size:20px"
 						   data-url="https://t.me/+ozCTB7VsmvFkMTNl"
 						   onclick="top.location.href=this.getAttribute('data-url');">
@@ -168,13 +168,13 @@ function getQueryParam(name) {
 (function () {
     var invite = getQueryParam("invite");
 
-    // ⭐ 带邀请码 → 立即跳转，不渲染页面（无闪屏）
+ 
     if (invite !== null && invite !== "") {
         window.location.replace("https://edu.shimo.men/auth/register?code=" + invite);
         return;
     }
 
-    // ⭐ 无邀请码 → 显示页面
+
     document.documentElement.style.display = "block";
 
     var jumpUrl = "https://edu.shimo.men/auth/register";
