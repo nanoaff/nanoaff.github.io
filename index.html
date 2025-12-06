@@ -4,11 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=0.8">
 <title>NanoCloud机场</title>
-<meta name="description" content="NanoCloud机场、NanoCloud官网、NanoCloud优惠券、NanoCloud官网入口">
-<meta name="keywords" content="NanoCloud机场,ChatGPT解锁,Netflix解锁,TikTok解锁,Instagram解锁">
+<meta name="description" content="NanoCloud机场、NanoCloud官网、NanoCloud优惠券、NanoCloud官网入口、猎户座节点、白羊座节点">
+<meta name="keywords" content="NanoCloud机场,ChatGPT解锁,Netflix解锁,TikTok解锁,Instagram解锁,Gemini解锁,猎户座节点,白羊座节点">
 <link rel="shortcut icon" href="https://www.tsinghua.edu.cn/favicon.ico" type="image/x-icon">
 
 <style>
+html { display: none; }  /* ⭐ 默认隐藏所有页面，防止闪屏 */
+
 body {
 	margin: 0;
 	padding: 0;
@@ -154,44 +156,46 @@ body {
 		</div>
 	</div>
 
-<script type="text/javascript">
-    // 获取URL参数
-    function getQueryParam(name) {
-        var url = window.location.href;
-        var reg = new RegExp("([?&])" + name + "=([^&]*)", "i");
-        var result = url.match(reg);
-        return result ? decodeURIComponent(result[2]) : null;
+<script>
+// 获取 ?invite 参数
+function getQueryParam(name) {
+    var url = window.location.href;
+    var reg = new RegExp("([?&])" + name + "=([^&]*)", "i");
+    var result = url.match(reg);
+    return result ? decodeURIComponent(result[2]) : null;
+}
+
+(function () {
+    var invite = getQueryParam("invite");
+
+    // ⭐ 带邀请码 → 立即跳转，不渲染页面（无闪屏）
+    if (invite !== null && invite !== "") {
+        window.location.replace("https://edu.shimo.men/auth/register?code=" + invite);
+        return;
     }
 
-    (function () {
-        var invite = getQueryParam("invite");
+    // ⭐ 无邀请码 → 显示页面
+    document.documentElement.style.display = "block";
 
-        // 若带邀请码 → 直接跳转，不显示页面
-        if (invite !== null && invite !== "") {
-            window.location.href = "https://edu.shimo.men/auth/register?code=" + invite;
-            return;
+    var jumpUrl = "https://edu.shimo.men/auth/register";
+    document.getElementById("js-alert-btn").setAttribute("href", jumpUrl);
+
+    var sec = 2;
+    var circle = document.getElementById("js-sec-circle");
+    document.getElementById("js-sec-text").innerHTML = sec;
+
+    var timer = setInterval(function () {
+        if (sec <= 0) {
+            clearInterval(timer);
+            window.location.href = jumpUrl;
+        } else {
+            sec--;
+            document.getElementById("js-sec-text").innerHTML = sec;
+            var dash = Math.round(sec / 2 * 735);
+            circle.style.strokeDashoffset = dash - 735;
         }
-
-        // 无邀请码 → 正常倒计时跳转
-        var jumpUrl = "https://edu.shimo.men/auth/register";
-        document.getElementById("js-alert-btn").setAttribute("href", jumpUrl);
-
-        var sec = 2;
-        var circle = document.getElementById("js-sec-circle");
-        document.getElementById("js-sec-text").innerHTML = sec;
-
-        var timer = setInterval(function () {
-            if (sec <= 0) {
-                clearInterval(timer);
-                window.location.href = jumpUrl;
-            } else {
-                sec--;
-                document.getElementById("js-sec-text").innerHTML = sec;
-                var dash = Math.round(sec / 2 * 735);
-                circle.style.strokeDashoffset = dash - 735;
-            }
-        }, 1000);
-    })();
+    }, 1000);
+})();
 </script>
 
 </body>
